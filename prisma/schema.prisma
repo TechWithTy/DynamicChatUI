@@ -1,0 +1,119 @@
+datasource db {
+  provider          = "mysql"
+  url               = env("DATABASE_URL_MAIN")
+  shadowDatabaseUrl = env("DATABASE_URL_SHADOW")
+  relationMode      = "prisma"
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "fullTextIndex"]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+  password          String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+model Session {
+  id           String     @id @default(cuid())
+  sessionToken String     @unique
+  userId       String
+  expires      DateTime
+  user         User?      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model User {
+  id             String           @id @default(cuid())
+  firstName      String?
+  lastName       String?
+  email          String           @unique
+  emailVerified  DateTime?
+  password       String           @default("")
+  image          Image?           @relation(fields: [imageId], references: [id])
+  addressId      String?
+  role           Role             @default(USER)
+  address        Address?         @relation(fields: [addressId], references: [id])
+  accounts       Account[]
+  imageId        String?
+  ApiCredentials ApiCredentials[]
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @default(now()) @updatedAt
+  Session        Session[]
+
+
+  @@index([addressId])
+  @@index([imageId])
+}
+
+model Address {
+  id            String       @id @default(cuid())
+  coordinates   Coordinates? @relation(fields: [coordinatesId], references: [id])
+  street        String
+  city          String
+  state         String
+  zipCode       String
+  country       String
+  User          User[]
+  coordinatesId String?
+
+  @@index([coordinatesId])
+}
+
+model Coordinates {
+  id        String    @id @default(cuid())
+  latitude  Decimal   @db.Decimal(8, 6)
+  longitude Decimal   @db.Decimal(9, 6)
+  Address   Address[]
+}
+
+model ApiCredentials {
+  id      String   @id @default(uuid())
+  token   String   @db.Text
+  expires DateTime
+  user    User     @relation(fields: [userId], references: [id])
+  userId  String
+
+  @@index([userId])
+}
+
+enum Role {
+  ADMIN
+  SUPERUSER
+  TRUSTED
+  USER
+  CUSTOMER
+}
+
+model Image {
+  id                 String               @id @default(uuid())
+  name               String?
+  src                String               @db.Text
+  User               User[]
+
+}
