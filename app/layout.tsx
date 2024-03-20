@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title: Owner.seo.metaTitle,
   description: Owner.seo.metaDescription,
   keywords: Owner.seo.keywords,
-  metadataBase: new URL(process.env.NEXTAUTH_URL as string),
+  metadataBase: new URL(process.env.NEXTAUTH_URL! ?? "https://www.cybershoptech.com"),
   twitter: {
     card: "summary_large_image",
     title: Owner.seo.metaTitle,
