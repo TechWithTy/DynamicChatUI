@@ -14,6 +14,7 @@ import { Suspense } from "react";
 import { abel, inter, nunito, sfPro } from "./fonts";
 import "./globals.css";
 import { authOptions } from "@/lib/nextAuthAdapter";
+import SidePanel from "@/components/Sidepanel";
 
 export const metadata: Metadata = {
   title: Owner.seo.metaTitle,
@@ -108,6 +109,7 @@ export default async function RootLayout({
           />
         </Suspense>
         <main className="relative min-h-screen w-full  overflow-x-hidden pt-16 xl:pt-24 dark:bg-gray-900 dark:text-white">
+          <SidePanel />
           {children}
           <noscript>
             <iframe
