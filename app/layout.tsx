@@ -19,7 +19,9 @@ export const metadata: Metadata = {
   title: Owner.seo.metaTitle,
   description: Owner.seo.metaDescription,
   keywords: Owner.seo.keywords,
-  metadataBase: new URL(process.env.NEXTAUTH_URL! ?? "https://www.cybershoptech.com"),
+  metadataBase: new URL(
+    process.env.NEXTAUTH_URL! ?? "https://www.cybershoptech.com",
+  ),
   twitter: {
     card: "summary_large_image",
     title: Owner.seo.metaTitle,
@@ -41,12 +43,11 @@ export const metadata: Metadata = {
   viewport: {
     width: "device-width",
     initialScale: 1,
-    maximumScale: 1
+    maximumScale: 1,
   },
   alternates: {
-    canonical: "https://www.cybershoptech.com"
-  }
-
+    canonical: "https://www.cybershoptech.com",
+  },
 };
 
 export default async function RootLayout({
@@ -60,7 +61,6 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-
       <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER}`}
@@ -124,7 +124,7 @@ export default async function RootLayout({
           </Suspense>
         }
         <ContactButton />
-        <Footer />
+        {/* <Footer /> */}
         <Analytics />
       </body>
     </html>
