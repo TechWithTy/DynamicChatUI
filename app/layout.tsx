@@ -123,7 +123,6 @@ export default async function RootLayout({
             <Notification />
           </Suspense>
         }
-        <ContactButton />
         {/* <Footer /> */}
         <Analytics />
       </body>
