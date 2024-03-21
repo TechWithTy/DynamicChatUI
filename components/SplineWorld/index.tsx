@@ -33,11 +33,12 @@ const SplineSceneComponent: FunctionComponent<AppProps> = ({ sceneUrl }) => {
     <div>
       <Suspense fallback={<div>Loading...</div>}>
         {/* Use the sceneUrl prop to dynamically set the Spline scene */}
-        <Spline scene={sceneUrl} onLoad={onLoad} />
+        <div style={{ minWidth: "1000px" }}>
+          {" "}
+          {/* Adjust the min-width as needed */}
+          <Spline scene={sceneUrl} onLoad={onLoad} />
+        </div>
       </Suspense>
-      <button type="button" onClick={moveObj}>
-        Move Cube
-      </button>
     </div>
   );
 };
