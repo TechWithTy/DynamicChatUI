@@ -25,7 +25,9 @@ function App() {
             ></div>
           </div>
         </div>
-        <SplineSceneComponent sceneUrl="https://prod.spline.design/vPUnT6OjZy3MYMsE/scene.splinecode" />
+        <div className="w-3/6">
+          <SplineSceneComponent sceneUrl="https://prod.spline.design/vPUnT6OjZy3MYMsE/scene.splinecode" />
+        </div>
       </div>
     </section>
   );

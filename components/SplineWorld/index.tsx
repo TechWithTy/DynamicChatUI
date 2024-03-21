@@ -33,7 +33,7 @@ const SplineSceneComponent: FunctionComponent<AppProps> = ({ sceneUrl }) => {
     <div>
       <Suspense fallback={<div>Loading...</div>}>
         {/* Use the sceneUrl prop to dynamically set the Spline scene */}
-        <div style={{ minWidth: "1000px" }}>
+        <div style={{ width: "100%" }}>
           {" "}
           {/* Adjust the min-width as needed */}
           <Spline scene={sceneUrl} onLoad={onLoad} />
