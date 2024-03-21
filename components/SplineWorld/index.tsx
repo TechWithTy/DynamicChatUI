@@ -12,20 +12,20 @@ interface AppProps {
 // Apply TypeScript typing for your functional component using the AppProps interface
 const SplineSceneComponent: FunctionComponent<AppProps> = ({ sceneUrl }) => {
   // Use useRef to keep a reference to the cube, typing the ref with any to accommodate dynamic object properties
-  const cube = useRef<any>(null);
+  const sphere = useRef<any>(null);
 
   // This function is called once the Spline scene is loaded, type the parameter as any for maximum flexibility with Spline library
   function onLoad(spline: any) {
     // Find the object by name within the Spline scene
-    const obj = spline.findObjectByName("Cube");
-    cube.current = obj; // Assign the object to the ref
+    const obj = spline.findObjectByName("Sphere");
+    sphere.current = obj; // Assign the object to the ref
   }
 
   // Function to move the cube on button click
   function moveObj() {
     // Check if the cube reference exists and then modify its position
-    if (cube.current) {
-      cube.current.position.x += 10;
+    if (sphere.current) {
+      sphere.current.position.x += 10;
     }
   }
 
