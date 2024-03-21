@@ -5,7 +5,7 @@ import NavBar from "@/components/layout/navbar";
 import { Owner } from "@/data/ownerData";
 import { Analytics } from "@vercel/analytics/react";
 import cx from "classnames";
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 import { getServerSession } from "next-auth";
 import Head from "next/head";
 import { cookies } from "next/headers";
@@ -14,7 +14,8 @@ import { Suspense } from "react";
 import { abel, inter, nunito, sfPro } from "./fonts";
 import "./globals.css";
 import { authOptions } from "@/lib/nextAuthAdapter";
-import SidePanel from "@/components/Sidepanel";
+import SidePanel from "@/components/Sidebar";
+import HomeLayout from "@/components/layout/HomeLayout";
 
 export const metadata: Metadata = {
   title: Owner.seo.metaTitle,
@@ -41,16 +42,16 @@ export const metadata: Metadata = {
   other: {
     "fb:app_id": process.env.FACEBOOK_ID as string,
   },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-  },
   alternates: {
     canonical: "https://www.cybershoptech.com",
   },
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
 export default async function RootLayout({
   children,
 }: {
@@ -99,7 +100,9 @@ export default async function RootLayout({
           abel.variable,
           nunito.variable,
         )} 
-                        ${theme?.value} overflow-x-hidden antialiased`}
+                        ${
+          theme?.value
+          } relative max-h-screen min-h-screen overflow-x-hidden antialiased`}
       >
         <div className="fixed h-full w-screen dark:bg-gray-900 dark:text-white " />
         <Suspense fallback="...">
@@ -108,9 +111,8 @@ export default async function RootLayout({
             darkMode={theme?.value === "dark" ? true : false}
           />
         </Suspense>
-        <main className="relative min-h-screen w-full  overflow-x-hidden pt-16 xl:pt-24 dark:bg-gray-900 dark:text-white">
-          <SidePanel />
-          {children}
+        <main className="fixed h-full w-full overflow-x-hidden pt-16 xl:pt-24 dark:bg-gray-900 dark:text-white">
+          <HomeLayout>{children}</HomeLayout>
           <noscript>
             <iframe
               src="https://www.googletagmanager.com/ns.html?id=G-55E14FBFE1"

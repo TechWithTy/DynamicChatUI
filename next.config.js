@@ -1,19 +1,31 @@
 /** @type {import('next').NextConfig} */
+
+const imageLocations = [
+  "lh3.googleusercontent.com",
+  "res.cloudinary.com",
+  "www.facebook.com",
+  "www.google.com",
+  "www.cjdropshipping.com",
+  "www.amazon.com",
+  "example.com",
+  "images.unsplash.com",
+  "via.placeholder.com",
+  "picsum.photos",
+  "m.media-amazon.com",
+  "images.pexels.com",
+  "cdn.dribbble.com",
+  "api.dicebear.com",
+
+
+];
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   
   images: {
     dangerouslyAllowSVG:true,
-    domains: [
-      "lh3.googleusercontent.com", 
-    "vercel.com",
-    "placehold.co",
-    "images.unsplash.com", 
-    "res.cloudinary.com", 
-    "picsum.photos",
-    "api.dicebear.com",
-  "avatars.githubusercontent.com"],
+    remotePatterns: imageLocations.map((location) => ({ hostname: location })),
+
   },
   async redirects() {
     return [
