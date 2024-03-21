@@ -1,52 +1,118 @@
-import React from 'react';
-import { PlusCircle,CircleDotIcon , TriangleIcon } from 'lucide-react';
-
-interface ProjectProps {
-  name: string;
+import React from "react";
+import {
+  Home,
+  FileText,
+  Monitor,
+  Coffee,
+  MessageCircle,
+  PlusCircle,
+  User,
+} from "lucide-react";
+import { CircleDotIcon, TriangleIcon } from "lucide-react";
+import ProjectsList from "./projectsList";
+interface SidebarProps {
+  // Add any props here if needed
+}
+interface ProjectItemProps {
+  label: string;
+  icon: JSX.Element;
   isActive?: boolean;
-  isAlert?: boolean;
 }
 
-const ProjectItem: React.FC<ProjectProps> = ({ name, isActive, isAlert }) => {
-  return (
-    <div className={`flex items-center p-2 rounded-md cursor-pointer ${isActive ? 'bg-blue-500 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}`}>
-      {isAlert && <TriangleIcon className="text-red-500 mr-2" />}
-      {isActive && !isAlert && <CircleDotIcon className="text-blue-300 mr-2" />}
-      <span className="flex-1">{name}</span>
-    </div>
-  );
-};
-const SidePanel: React.FC = () => {
-  return (
-    <aside className="bg-black text-white w-64 p-4 space-y-6">
-      <div>
-        <h2 className="font-semibold text-lg">GENERAL</h2>
-        {/* General items would be here */}
-      </div>
-      <div>
-        <h2 className="font-semibold text-lg">PROJECTS</h2>
-        {/* Project items would be mapped here based on data fetched or provided */}
-        <ProjectItem name="Orbital Odyssey" isActive />
-        <ProjectItem name="Digital Product Launch" isAlert />
-        <ProjectItem name="Brand Refresh" />
-        <ProjectItem name="Social Media Strategy" />
-        <button className="flex items-center p-2 rounded-md cursor-pointer text-gray-300 hover:bg-gray-700 hover:text-white mt-4">
-          <PlusCircle className="mr-2" size={18} />
-          Add new project
-        </button>
-      </div>
-      <div className="fixed bottom-0 w-64">
-        {/* User profile section */}
-        <div className="flex items-center justify-between p-4 bg-gray-800 rounded-md">
-          <div className="flex items-center space-x-3">
-            {/* User image would be here */}
-            <span>Ryan Lee</span>
-          </div>
-          <span className="text-sm text-gray-400">Product</span>
-        </div>
-      </div>
-    </aside>
-  );
-};
+// Provide the array with the correct type
+const projectData: ProjectItemProps[] = [
+  {
+    label: "Orbital Odyssey",
+    icon: <CircleDotIcon size={20} className="text-red-500" />,
+    isActive: false,
+  },
+  {
+    label: "Digital Product Launch",
+    icon: <TriangleIcon size={20} className="text-orange-500" />,
+    isActive: true,
+  },
+  // ... more project items
+];
 
-export default SidePanel;
+const ProjectsListDynamic = () => (
+  <aside className="projects-sidebar">
+    <div className="projects-container space-y-1">
+      {projectData.map((project, index) => (
+        <ProjectsList
+          key={index}
+          icon={project.icon}
+          label={project.label}
+          isActive={project.isActive}
+        />
+      ))}
+      {/* Assuming PlusCircle is for adding a new project */}
+    </div>
+  </aside>
+);
+
+const SidebarItem = ({
+  icon,
+  label,
+  isActive = false,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  isActive?: boolean;
+}) => (
+  <a
+    href="#"
+    className={`flex items-center rounded-lg px-3 py-2 text-sm font-medium ${
+      isActive
+        ? "bg-gray-700 text-white"
+        : "text-gray-400 hover:bg-gray-700 hover:text-white"
+    }`}
+  >
+    {icon}
+    <span className="ml-3">{label}</span>
+  </a>
+);
+
+const Sidebar: React.FC<SidebarProps> = () => (
+  <aside className="flex h-full min-h-screen w-16 flex-col bg-gray-800 md:w-64">
+    {/* Logo or Brand Name */}
+    <div className="flex h-16 shrink-0 items-center justify-center px-4">
+      {/* You can replace this with an actual logo image if you have one */}
+      <img
+        src="path-to-your-logo.png"
+        alt="Organization Logo"
+        className="h-12 w-auto"
+      />
+    </div>
+
+    <div className="flex-grow overflow-y-auto">
+      <nav className="mt-5 space-y-1 px-2">
+        {/* The actual navigation items */}
+        <SidebarItem
+          icon={<Home size={20} className="text-gray-400" />}
+          label="Search"
+          isActive
+        />
+        <SidebarItem
+          icon={<FileText size={20} className="text-gray-400" />}
+          label="Billing"
+        />
+        {/* Add more nav items as needed */}
+      </nav>
+    </div>
+
+    {/* Bottom part of the sidebar for additional actions or profile */}
+    <div className="mt-auto px-2 pb-4 pt-4">
+      <SidebarItem
+        icon={<PlusCircle size={20} className="text-gray-400" />}
+        label="Add new project"
+      />
+      {/* Profile Section */}
+      <div className="mt-4 flex items-center px-3 py-2">
+        <User size={20} className="text-gray-400" />
+        <span className="ml-3 text-sm font-medium text-gray-400">Ryan Lee</span>
+      </div>
+    </div>
+  </aside>
+);
+
+export default Sidebar;
