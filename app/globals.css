@@ -43,6 +43,12 @@
   }
 }
 
+@layer utilities {
+  .scrollbar-thin {
+
+    scrollbar-width: thin;
+  }
+}
 
 /* styles.css */
 /* styles.css */

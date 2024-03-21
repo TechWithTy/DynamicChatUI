@@ -112,7 +112,7 @@ export default async function RootLayout({
           />
         </Suspense>
         <main className="fixed h-full w-full overflow-x-hidden pt-16 xl:pt-24 dark:bg-gray-900 dark:text-white">
-          <HomeLayout>{children}</HomeLayout>
+          {children}
           <noscript>
             <iframe
               src="https://www.googletagmanager.com/ns.html?id=G-55E14FBFE1"

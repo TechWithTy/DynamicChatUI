@@ -1,5 +1,3 @@
-// components/Layout.tsx
-'use client'
 import React, { ReactNode, useState } from 'react';
 import ProjectHeader from "../ProjectHeader";
 import Sidebar from "../Sidebar";

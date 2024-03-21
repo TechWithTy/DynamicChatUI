@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useState } from "react";
 import {
   Home,
@@ -11,6 +11,7 @@ import {
   SquareKanban,
   XCircle,
   ChevronRight,
+  ChevronLeft,
 } from "lucide-react";
 import { CircleDotIcon, TriangleIcon } from "lucide-react";
 import ProjectsList from "./projectsList";
@@ -53,7 +54,7 @@ const SidebarItem = ({
   <a
     href="#"
     className={`flex items-center rounded-lg px-3 py-2 text-sm font-medium ${isActive
-      ? "bg-slate-500 dark:bg-gray-700 text-white"
+      ? "bg-slate-500 text-white dark:bg-gray-700"
       : "text-gray-400 hover:bg-gray-700 hover:text-white"
       }`}
   >
@@ -63,16 +64,26 @@ const SidebarItem = ({
 );
 
 const Sidebar: React.FC<SidebarProps> = (props) => {
-
-  const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
+  const [isSidePanelOpen, setIsSidePanelOpen] = useState(true);
 
   return (
-
-    <div className="relative lg:text-sm xl:text-base">
-      <button onClick={() => setIsSidePanelOpen(!isSidePanelOpen)} className={`lg:hidden z-30  ${isSidePanelOpen ? ' absolute left-64' : 'absolute top-1/2 left-0 hover:animate-float'}`}>
-        {isSidePanelOpen ? <XCircle /> : <ChevronRight />}
+    <div className="relative lg:text-sm xl:text-base w-fit">
+      <button
+        onClick={() => setIsSidePanelOpen(!isSidePanelOpen)}
+        className={` z-30  ${isSidePanelOpen
+          ? " absolute left-full top-1/2"
+          : "absolute left-0 top-1/2"
+          }  hover:animate-ping`}
+      >
+        {isSidePanelOpen ? <ChevronLeft /> : <ChevronRight />}
       </button>
-      <aside className={`transform top-0 left-0 w-64 fixed h-full lg:relative lg:flex overflow-auto ease-in-out transition-all duration-300 z-10 ${isSidePanelOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'} flex h-full lg:w-full flex-col bg-slate-300 dark:bg-gray-800 mt-16 lg:mt-0`}>
+      <aside
+        className={`fixed left-0 top-0 z-10 h-full w-64 
+        transform overflow-auto transition-all duration-300 ease-in-out l
+        g:relative lg:flex flex  flex-col rounded-r-lg bg-slate-300 lg:mt-0  dark:bg-gray-800 
+        ${isSidePanelOpen ? "lg:relative lg:w-64" : "relative -translate-x-full w-0 hidden"
+          } mt-16 `}
+      >
         {/* Logo or Brand Name */}
         <div className="flex h-16 shrink-0 items-center justify-center gap-3 px-4">
           {/* You can replace this with an actual logo image if you have one */}
@@ -80,7 +91,7 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
             <Image
               src={
                 props.organizationLogo ??
-                `https://api.dicebear.com/7.x/initials/svg?seed=${props.organizationName}`
+                `https://api.dicebear.com/7.x/initials/svg?seed=${props.organizationName}&backgroundColor=7cb342,c0aede,b6e3f4,8e24aa,d81b60,d1d4f9&backgroundType=gradientLinear`
               }
               alt="Organization Logo"
               className="aspect-square h-6 w-auto rounded-full"
@@ -119,12 +130,14 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
           {/* Profile Section */}
           <div className="mt-4 flex items-center px-3 py-2">
             <User size={20} className="text-gray-400" />
-            <span className="ml-3 text-sm font-medium text-gray-400">Ryan Lee</span>
+            <span className="ml-3 text-sm font-medium text-gray-400">
+              Ryan Lee
+            </span>
           </div>
         </div>
       </aside>
     </div>
-  )
+  );
 };
 
 export default Sidebar;
