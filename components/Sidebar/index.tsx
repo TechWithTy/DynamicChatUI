@@ -71,17 +71,17 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
       <button
         onClick={() => setIsSidePanelOpen(!isSidePanelOpen)}
         className={` z-30  ${isSidePanelOpen
-          ? " absolute left-full top-1/2"
+          ? " absolute left-64 lg:left-full top-1/2"
           : "absolute left-0 top-1/2"
           }  hover:animate-ping`}
       >
         {isSidePanelOpen ? <ChevronLeft /> : <ChevronRight />}
       </button>
       <aside
-        className={`fixed left-0 top-0 z-10 h-full w-64 
+        className={` left-0 top-0 z-10 h-full w-64 
         transform overflow-auto transition-all duration-300 ease-in-out l
         g:relative lg:flex flex  flex-col rounded-r-lg bg-slate-300 lg:mt-0  dark:bg-gray-800 
-        ${isSidePanelOpen ? "lg:relative lg:w-64" : "relative -translate-x-full w-0 hidden"
+        ${isSidePanelOpen ? "fixed lg:relative lg:w-64" : "relative -translate-x-full w-0 hidden"
           } mt-16 `}
       >
         {/* Logo or Brand Name */}

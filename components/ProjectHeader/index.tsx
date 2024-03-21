@@ -26,7 +26,7 @@ const ProjectHeader: React.FC<HeaderProps> = ({ title, description, tabs }) => {
                         ))}
                     </div>
                 </div>
-                <button className=" hidden gap-2 rounded-md bg-blue-600 p-2 hover:bg-blue-700 lg:flex dark:bg-gray-600 dark:hover:bg-slate-700 ">
+                <button className=" hidden gap-2 rounded-md bg-blue-600 text-white p-2 hover:bg-blue-700 lg:flex dark:bg-gray-600 dark:hover:bg-slate-700 ">
                     <Share2 size={20} className="" />
                     Share
                 </button>
