@@ -14,8 +14,6 @@ import { Suspense } from "react";
 import { abel, inter, nunito, sfPro } from "./fonts";
 import "./globals.css";
 import { authOptions } from "@/lib/nextAuthAdapter";
-import SidePanel from "@/components/Sidebar";
-import HomeLayout from "@/components/layout/HomeLayout";
 
 export const metadata: Metadata = {
   title: Owner.seo.metaTitle,

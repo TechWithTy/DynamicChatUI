@@ -12,14 +12,24 @@ import {
   XCircle,
   ChevronRight,
   ChevronLeft,
+  Settings,
 } from "lucide-react";
 import { CircleDotIcon, TriangleIcon } from "lucide-react";
 import ProjectsList from "./projectsList";
 import Image from "next/image";
+import Link from "next/link";
+import UserIcon from "../shared/UserIcon";
 interface SidebarProps {
   // Add any props here if needed
   organizationLogo?: string;
   organizationName: string;
+  memberCount: number;
+  user: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    image?: string
+  }
 }
 interface ProjectItemProps {
   label: string;
@@ -67,25 +77,27 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
   const [isSidePanelOpen, setIsSidePanelOpen] = useState(true);
 
   return (
-    <div className="relative lg:text-sm xl:text-base w-fit">
+    <div className="relative w-fit lg:text-sm xl:text-base">
       <button
         onClick={() => setIsSidePanelOpen(!isSidePanelOpen)}
         className={` z-30  ${isSidePanelOpen
-          ? " absolute left-64 lg:left-full top-1/2"
+          ? " absolute left-64 top-1/2 lg:left-full"
           : "absolute left-0 top-1/2"
           }  hover:animate-ping`}
       >
         {isSidePanelOpen ? <ChevronLeft /> : <ChevronRight />}
       </button>
       <aside
-        className={` left-0 top-0 z-10 h-full w-64 
-        transform overflow-auto transition-all duration-300 ease-in-out l
-        g:relative lg:flex flex  flex-col rounded-r-lg bg-slate-300 lg:mt-0  dark:bg-gray-800 
-        ${isSidePanelOpen ? "fixed lg:relative lg:w-64" : "relative -translate-x-full w-0 hidden"
+        className={` lg:relative left-0 top-0 z-10 
+        flex h-full  transform flex-col overflow-auto
+        rounded-r-lg bg-slate-300 transition-all  duration-300 ease-in-out lg:mt-0 lg:flex  dark:bg-gray-800 
+        ${isSidePanelOpen
+            ? "fixed w-64 lg:relative lg:w-64"
+            : "relative hidden w-0 -translate-x-full"
           } mt-16 `}
       >
         {/* Logo or Brand Name */}
-        <div className="flex h-16 shrink-0 items-center justify-center gap-3 px-4">
+        <div className="flex h-16 shrink-0 items-center justify-center gap-4 px-4">
           {/* You can replace this with an actual logo image if you have one */}
           {
             <Image
@@ -94,45 +106,54 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
                 `https://api.dicebear.com/7.x/initials/svg?seed=${props.organizationName}&backgroundColor=7cb342,c0aede,b6e3f4,8e24aa,d81b60,d1d4f9&backgroundType=gradientLinear`
               }
               alt="Organization Logo"
-              className="aspect-square h-6 w-auto rounded-full"
+              className="aspect-square h-10 w-auto rounded-full"
               width={50}
               height={50}
             />
           }
-          <span>{props.organizationName}</span>
+          <div className="flex flex-col justify-center items-start">
+            <span className="text-lg font-semibold">{props.organizationName}</span>
+            <span>{props.memberCount} Members</span>
+          </div>
         </div>
-        <div className="flex flex-col overflow-y-auto px-2">
-          <span>General</span>
-          <nav className="mt-5 space-y-1 px-2">
-            {/* The actual navigation items */}
+        <div className="mt-5">
+          <div className="flex flex-col overflow-y-auto px-2 my-5">
+            <span>General</span>
+            <nav className="mt-5 space-y-1 px-2">
+              {/* The actual navigation items */}
+              <SidebarItem
+                icon={<Home size={20} className="text-gray-400" />}
+                label="Search"
+                isActive
+              />
+              <SidebarItem
+                icon={<FileText size={20} className="text-gray-400" />}
+                label="Billing"
+              />
+              {/* Add more nav items as needed */}
+            </nav>
+          </div>
+          <div className="flex-grow px-2  my-5">
+            <span>Projects</span>
+            <ProjectsList list={projectData} />
             <SidebarItem
-              icon={<Home size={20} className="text-gray-400" />}
-              label="Search"
-              isActive
+              icon={<PlusCircle size={20} className="text-gray-400" />}
+              label="Add new project"
             />
-            <SidebarItem
-              icon={<FileText size={20} className="text-gray-400" />}
-              label="Billing"
-            />
-            {/* Add more nav items as needed */}
-          </nav>
-        </div>
-        <div className="flex-grow px-2">
-          <span>Projects</span>
-          <ProjectsList list={projectData} />
-          <SidebarItem
-            icon={<PlusCircle size={20} className="text-gray-400" />}
-            label="Add new project"
-          />
+          </div>
         </div>
         {/* Bottom part of the sidebar for additional actions or profile */}
-        <div className="mt-auto px-2 pb-4 pt-4">
+        <div className="mt-auto px-2 pb-4 pt-4 bg-gray-300 dark:bg-gray-700 rounded-lg shadow-lg p-2 m-2">
           {/* Profile Section */}
-          <div className="mt-4 flex items-center px-3 py-2">
-            <User size={20} className="text-gray-400" />
-            <span className="ml-3 text-sm font-medium text-gray-400">
-              Ryan Lee
+          <div className=" flex items-center px-3 py-2 justify-around">
+            <UserIcon user={props.user}  isOnline={true}/>
+            <span className="ml-3 text-sm font-medium first-letter:uppercase">
+              {props.user.firstName + " " + props.user.lastName}
             </span>
+
+            <div>
+              <Link href={'/settings'}><Settings /></Link>
+            </div>
           </div>
         </div>
       </aside>

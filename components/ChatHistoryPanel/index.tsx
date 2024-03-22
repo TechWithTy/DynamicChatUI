@@ -1,7 +1,7 @@
 // components/ChatHistoryPanel.tsx
-'use client'
-import React, { useState } from 'react';
-import { MessageSquare, ChevronDown, ChevronUp } from 'lucide-react';
+"use client";
+import React, { useState } from "react";
+import { MessageSquare, ChevronDown, ChevronUp, Trash } from "lucide-react";
 
 interface ChatItemProps {
   title: string;
@@ -10,10 +10,15 @@ interface ChatItemProps {
 
 const ChatItem: React.FC<ChatItemProps> = ({ title, date }) => {
   return (
-    <div className="flex items-center gap-2 justify-between p-2 my-1 rounded-md">
-      <MessageSquare className="text-gray-400" size={20} />
-      <div>
-        <div className="font-semibold ">{title}</div>
+      <div className="my-1 flex items-center justify-between rounded-md p-2">
+          <div className="mr-3 w-full">
+              <div className="flex justify-between w-full">
+                  <span className="line-clamp-1 text-sm ">{title}</span>
+
+                  <button className="hover:text-red-500">
+                      <Trash size={20} />
+                  </button>
+              </div>
         <div className="text-xs text-gray-400">{date}</div>
       </div>
     </div>
@@ -25,19 +30,19 @@ const ChatHistoryPanel: React.FC = () => {
 
   // Dummy chat history data
   const chatHistory = [
-    { title: 'Developing Side Panel Components', date: 'Today' },
-    { title: 'Game Type and Mechanics', date: 'Yesterday' },
-    { title: 'User Request: Summarize conversation', date: 'Yesterday' },
+      { title: "Developing Side Panel Components", date: "Today" },
+      { title: "Game Type and Mechanics", date: "Yesterday" },
+      { title: "User Request: Summarize conversation", date: "Yesterday" },
     // ... add more items as needed
   ];
 
   return (
-    <aside className="w-64 dark:bg-gray-900 h-full flex flex-col">
+      <aside className="flex h-full w-64 flex-col dark:bg-gray-900">
       <button
         className="flex items-center justify-between p-4"
         onClick={() => setIsExpanded(!isExpanded)}
       >
-        <span>Chat History</span>
+              <span className="text-lg">Chat History</span>
         {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
       </button>
 
