@@ -4,6 +4,7 @@ import Sidebar from "../Sidebar";
 import { SquareKanban } from "lucide-react";
 import { Bot, File, MessageSquare, Component } from "lucide-react";
 import ChatHistoryPanel from "../ChatHistoryPanel";
+import StarterPackComponent from "../Intellicore/StarterPrompts";
 interface LayoutProps {
   children: ReactNode; // This is the type for children prop
 }
@@ -33,8 +34,9 @@ const HomeLayout: React.FC<LayoutProps> = ({ children }) => {
           tabs={tabs}
           icons={icons} // Pass the icons array here
         />
-
+        <StarterPackComponent />
         {/* Chat Window & Rest of the content */}
+
         <div className="flex flex-1">
           <main className="flex-1 overflow-y-auto">{children}</main>
           <aside>
