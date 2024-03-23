@@ -7,7 +7,7 @@ import ChatHistoryPanel from "../ChatHistoryPanel";
 import StarterPackComponent from "../Intellicore/StarterPrompts";
 import HorizontalMenu from "../Intellicore/Actions";
 import DynamicGrid from "../Library/home";
-
+import CustomerMessagesSidebar from "../Sidebar/customerMessages";
 interface Item {
   title: string;
   description: string;
@@ -22,6 +22,23 @@ interface Row {
   items: Item[];
 }
 
+interface Message {
+  name: string;
+  time: string;
+  message: string;
+  tags?: string[];
+}
+
+const messages: Message[] = [
+  {
+    name: "Elmer Laverty",
+    time: "12m",
+    message: "Haha oh man 😂",
+    avatarUrl: "https://via.placeholder.com/40", // Replace with actual image URL
+    tags: ["Question", "Help wanted"],
+  },
+  // ... other messages
+];
 const data: Row[] = [
   {
     name: "Images",
@@ -74,8 +91,8 @@ const HomeLayout: React.FC<LayoutProps> = ({ children }) => {
         />
         {/* <StarterPackComponent />
         <HorizontalMenu /> */}
-        <DynamicGrid data={data} />
-
+        {/* <DynamicGrid data={data} /> */}
+        <CustomerMessagesSidebar messages={messages} />
         {/* Chat Window & Rest of the content */}
 
         <div className="flex flex-1">
