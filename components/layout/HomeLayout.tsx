@@ -2,19 +2,20 @@ import React, { ReactNode, useState } from "react";
 import ProjectHeader from "../ProjectHeader";
 import Sidebar from "../Sidebar";
 import { SquareKanban } from "lucide-react";
-import { Bot, File, MessageSquare } from "lucide-react";
+import { Bot, File, MessageSquare, Component } from "lucide-react";
 import ChatHistoryPanel from "../ChatHistoryPanel";
 interface LayoutProps {
   children: ReactNode; // This is the type for children prop
 }
 
 const HomeLayout: React.FC<LayoutProps> = ({ children }) => {
-  const tabs = ["Intellicore", "Chat", "Library"];
+  const tabs = ["Intellicore", "Chat", "Library", "Theme"];
 
   const icons = [
     <Bot size={20} key={0} />,
     <File size={20} key={1} />,
     <MessageSquare size={20} key={2} />,
+    <Component size={20} key={3} />,
   ];
 
   return (
