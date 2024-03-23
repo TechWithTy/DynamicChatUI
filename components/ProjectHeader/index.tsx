@@ -7,13 +7,16 @@ interface HeaderProps {
     title: string;
     description: string;
     tabs: string[];
-    users:  {  firstName?: string;
+    users: {
+        firstName?: string;
         lastName?: string;
         image?: string;
-        isOnline: boolean}[]
+        isOnline: boolean
+    }[],
+    icons: React.ReactNode[]; // Array of React node elements for icons
 }
 
-const ProjectHeader: React.FC<HeaderProps> = ({ title, description, tabs, users }) => {
+const ProjectHeader: React.FC<HeaderProps> = ({ title, description, tabs, users, icons }) => {
     return (
         <header className="p-4  dark:bg-gray-800  rounded-md">
             <div className="flex items-center justify-between">
@@ -24,10 +27,11 @@ const ProjectHeader: React.FC<HeaderProps> = ({ title, description, tabs, users 
                         {tabs.map((tab, index) => (
                             <div
                                 key={index}
-                                className={`mr-4 last:mr-0 ${index === 1 ? "text-green-500" : "text-gray-300"
+                                className={`mr-4 flex items-center last:mr-0 ${index === 0 ? "text-green-500" : "text-gray-300"
                                     }`}
                             >
-                                {tab}
+                                {icons[index]} {/* Render the passed-in icon */}
+                                <span className="ml-1">{tab}</span>
                             </div>
                         ))}
                     </div>

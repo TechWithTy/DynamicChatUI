@@ -1,10 +1,12 @@
 import React from "react";
 import { ChevronDown, Plus, Search } from "lucide-react";
+import Image from "next/image";
 
 interface Message {
   name: string;
   time: string;
   message: string;
+  image:string;
   tags?: string[];
 }
 
@@ -53,9 +55,11 @@ const CustomerMessagesSidebar: React.FC<SidebarProps> = ({ messages }) => {
             key={index}
             className="flex items-center border-b border-gray-700 p-3 hover:bg-gray-700"
           >
-            {message.avatarUrl ? (
-              <img
-                src={message.avatarUrl}
+            {message.image ? (
+              <Image
+               width={30}
+               height={30}
+                src={message.image}
                 alt={`${message.name}`}
                 className="mr-3 h-10 w-10 rounded-full object-cover"
               />
