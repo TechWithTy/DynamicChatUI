@@ -113,7 +113,7 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
           }
           <div className="flex flex-col justify-center items-start">
             <span className="text-lg font-semibold">{props.organizationName}</span>
-            <span>{props.memberCount} Members</span>
+            <span className="text-emerald-300">{props.memberCount} Members</span>
           </div>
         </div>
         <div className="mt-5">

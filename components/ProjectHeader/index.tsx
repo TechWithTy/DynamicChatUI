@@ -32,30 +32,31 @@ const ProjectHeader: React.FC<HeaderProps> = ({ title, description, tabs, users 
                         ))}
                     </div>
                 </div>
-                <div>
-                    <MembersIndicator additionalCount={5} users={users} />
-                </div>
-                <div className="hidden lg:flex lg:gap-2 lg:justify-center lg:items-center">
-                    <button className=" hidden gap-2 rounded-md bg-blue-600 text-white p-2 hover:bg-blue-700 lg:flex justify-center items-center dark:bg-transparent  dark:hover:bg-slate-700 ">
-                        <Share2 size={20} className="" />
-                        <span>Share</span>
+                <div className="flex">
+                    <div className="">
+                        <MembersIndicator additionalCount={5} users={users} />
+                    </div>
+                    <div className="hidden lg:flex lg:gap-2 lg:justify-center lg:items-center">
+                        <button className=" hidden gap-2 rounded-md bg-blue-600 text-white p-2 hover:bg-blue-700 lg:flex justify-center items-center dark:bg-transparent  dark:hover:bg-slate-700 ">
+                            <Share2 size={20} className="" />
+                            <span>Share</span>
+                        </button>
+                        <button className=" hidden gap-2 p-2 rounded-md  hover:text-white hover:bg-blue-700 lg:flex  dark:bg-gray-600 dark:hover:bg-slate-700 ">
+                            <Edit size={20} className="" />
+                        </button>
+                    </div>
+                    <button className=" rotate-90 flex gap-2 rounded-md  lg:hidden ">
+                        <CircleEllipsis />
                     </button>
-                    <button className=" hidden gap-2 p-2 rounded-md  hover:text-white hover:bg-blue-700 lg:flex  dark:bg-gray-600 dark:hover:bg-slate-700 ">
-                        <Edit size={20} className="" />
-                    </button>
-                </div>
-                <button className=" rotate-90 flex gap-2 rounded-md  lg:hidden ">
-                    <CircleEllipsis />
-                </button>
-
-                <div className="lg:hidden">
-                    <button className="flex gap-2 rounded-md bg-blue-600 text-white p-2 hover:bg-blue-700 lg:hidden dark:bg-gray-600 dark:hover:bg-slate-700 ">
-                        <Share2 size={20} className="" />
-                        Share
-                    </button>
-                    <button>
-                        <Edit />
-                    </button>
+                    <div className="lg:hidden">
+                        <button className="flex gap-2 rounded-md bg-blue-600 text-white p-2 hover:bg-blue-700 lg:hidden dark:bg-gray-600 dark:hover:bg-slate-700 ">
+                            <Share2 size={20} className="" />
+                            Share
+                        </button>
+                        <button>
+                            <Edit />
+                        </button>
+                    </div>
                 </div>
             </div>
             <hr className="my-2 border-gray-700" />
