@@ -15,7 +15,18 @@ interface SidebarProps {
 const CustomerMessagesSidebar: React.FC<SidebarProps> = ({ messages }) => {
   return (
     <aside className="h-screen w-64 bg-gray-800 text-white">
-      <div className="flex items-center justify-between border-b border-gray-700 p-4">
+      {/* Rounded search bar container */}
+      <div className="flex items-center justify-center p-4">
+        <div className="flex w-full items-center rounded-full bg-gray-700">
+          <Search size={20} className="ml-4 text-gray-400" />
+          <input
+            className="flex-grow rounded-full border-none bg-transparent px-4 py-2 text-sm text-white placeholder-gray-400 focus:outline-none"
+            placeholder="Search messages"
+          />
+        </div>
+      </div>
+      {/* Header container */}
+      <div className="flex items-center justify-between border-b border-gray-700 px-4 py-2">
         <div className="flex items-center space-x-1">
           <h2 className="text-lg font-bold">Messages</h2>
           <ChevronDown size={16} />
