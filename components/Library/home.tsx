@@ -26,15 +26,19 @@ const CardRow: React.FC<CardRowProps> = ({ rowName, items }) => {
         {items.map((item, index) => (
           <ImageCard
             key={index}
-            title={item.title}
-            description={item.description}
+            title="Captain Drake"
+            description="Natural born leader with years of experience in space exploration."
             imageUrls={[
               "https://via.placeholder.com/150",
               "https://via.placeholder.com/150",
               "https://via.placeholder.com/150",
             ]}
-            commentCount={12} // Placeholder count
-            userCount={27} // Placeholder count
+            avatarUrls={[
+              "https://via.placeholder.com/32",
+              "https://via.placeholder.com/32",
+              "https://via.placeholder.com/32",
+            ]}
+            commentCount={12}
           />
         ))}
       </div>
