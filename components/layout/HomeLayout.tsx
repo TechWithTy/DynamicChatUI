@@ -1,3 +1,4 @@
+'use client'
 import React, { ReactNode, useState } from "react";
 import ProjectHeader from "../ProjectHeader";
 import Sidebar from "../Sidebar";
@@ -6,8 +7,14 @@ import { Bot, File, MessageSquare, Component } from "lucide-react";
 import ChatHistoryPanel from "../ChatHistoryPanel";
 import StarterPackComponent from "../Intellicore/StarterPrompts";
 import HorizontalMenu from "../Intellicore/Actions";
-import DynamicGrid from "../Library/home";
+import LibraryTab from "../LibraryTab";
 import CustomerMessagesSidebar from "../Sidebar/customerMessages";
+import Intellicore from "../Intellicore";
+
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+
+
+import ChatUI from "../ChatUi";
 interface Item {
     title: string;
     description: string;
@@ -26,7 +33,7 @@ interface Message {
     name: string;
     time: string;
     message: string;
-    image:string;
+    image: string;
     tags?: string[];
 }
 
@@ -86,7 +93,8 @@ interface LayoutProps {
     children: ReactNode; // This is the type for children prop
 }
 
-const HomeLayout: React.FC<LayoutProps> = ({ children }) => {
+const HomeLayout: React.FC = () => {
+    const [currentTab, setCurrentTab] = useState(0);
     const tabs = ["Intellicore", "Chat", "Library", "Theme"];
 
     const icons = [
@@ -112,17 +120,36 @@ const HomeLayout: React.FC<LayoutProps> = ({ children }) => {
                     icons={icons} // Pass the icons array here
                     users={testUsers}
                 />
-                {/* <StarterPackComponent />
-        <HorizontalMenu /> */}
-                {/* <DynamicGrid data={data} /> */}
-                <CustomerMessagesSidebar messages={messages} />
-                {/* Chat Window & Rest of the content */}
 
-                <div className="flex flex-1">
-                    <main className="flex-1 overflow-y-auto">{children}</main>
-                    <aside>
-                        <ChatHistoryPanel />
-                    </aside>
+                <div className="flex">
+                    <main className="flex-grow overflow-y-auto">
+                        <Tabs selectedIndex={currentTab} onSelect={(index) => setCurrentTab(index)}>
+                            <TabList className={'dark:bg-gray-800'}>
+                                <div className="flex py-4 items-center">
+                                    {tabs.map((tab, index) => (
+                                        <Tab
+                                            key={index}
+                                            className={`mr-4 cursor-pointer bg-transparent flex items-center last:mr-0 aria-selected:text-green-500 aria-selected:bg-transparent`}
+
+                                        >
+                                            {icons[index]} {/* Render the passed-in icon */}
+                                            <span className="p-4">{tab}</span>
+                                        </Tab>
+                                    ))}
+                                </div>
+                            </TabList>
+                            <TabPanel >
+                                <Intellicore />
+                            </TabPanel>
+                            <TabPanel>
+                                <ChatUI />
+                            </TabPanel>
+                            <TabPanel >
+                                <LibraryTab data={[]} />
+                            </TabPanel>
+                        </Tabs>
+                    </main>
+                    <ChatHistoryPanel />
                 </div>
             </div>
         </div>

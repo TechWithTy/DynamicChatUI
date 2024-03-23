@@ -13,12 +13,17 @@ import {
   ChevronRight,
   ChevronLeft,
   Settings,
+  ChevronUp,
+  ChevronDown,
 } from "lucide-react";
 import { CircleDotIcon, TriangleIcon } from "lucide-react";
 import ProjectsList from "./projectsList";
 import Image from "next/image";
 import Link from "next/link";
 import UserIcon from "../shared/UserIcon";
+import Dropdown from "../shared/Dropdown";
+import SettingsModal from "../SettingsModal";
+import useWindowSize from "@/lib/hooks/use-window-size";
 interface SidebarProps {
   // Add any props here if needed
   organizationLogo?: string;
@@ -74,8 +79,9 @@ const SidebarItem = ({
 );
 
 const Sidebar: React.FC<SidebarProps> = (props) => {
-  const [isSidePanelOpen, setIsSidePanelOpen] = useState(true);
-
+  const {isDesktop} = useWindowSize()
+  const [isSidePanelOpen, setIsSidePanelOpen] = useState(isDesktop);
+  const [showSettings, setShowSettings] = useState(false);
   return (
     <div className="relative w-fit lg:text-sm xl:text-base">
       <button
@@ -97,7 +103,7 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
           } mt-16 `}
       >
         {/* Logo or Brand Name */}
-        <div className="flex h-16 shrink-0 items-center justify-center gap-4 px-4">
+        <div className="flex h-16 shrink-0 items-center justify-center gap-4 px-4 py-4">
           {/* You can replace this with an actual logo image if you have one */}
           {
             <Image
@@ -112,10 +118,14 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
             />
           }
           <div className="flex flex-col justify-center items-start">
-            <span className="text-lg font-semibold">{props.organizationName}</span>
+            <span className="text-base font-semibold line-clamp-1">{props.organizationName}</span>
             <span className="text-emerald-300">{props.memberCount} Members</span>
           </div>
+          <div>
+            <Dropdown options={[]} iconClose={<ChevronUp />} iconOpen={<ChevronDown />} />
+          </div>
         </div>
+        <hr className="dark:text-gray-700 h-[1px] my-5 border-gray-100 dark:border-gray-700" />
         <div className="mt-5">
           <div className="flex flex-col overflow-y-auto px-2 my-5">
             <span>General</span>
@@ -133,6 +143,8 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
               {/* Add more nav items as needed */}
             </nav>
           </div>
+          <hr className="dark:text-gray-700 h-[1px] my-5 border-gray-100 dark:border-gray-700" />
+
           <div className="flex-grow px-2  my-5">
             <span>Projects</span>
             <ProjectsList list={projectData} />
@@ -142,6 +154,8 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
             />
           </div>
         </div>
+        <hr className="dark:text-gray-700 h-[1px] my-5 border-gray-100 dark:border-gray-700" />
+
         {/* Bottom part of the sidebar for additional actions or profile */}
         <div className="mt-auto px-2 pb-4 pt-4 bg-gray-300 dark:bg-gray-700 rounded-lg shadow-lg p-2 m-2">
           {/* Profile Section */}
@@ -152,11 +166,12 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
             </span>
 
             <div>
-              <Link href={'/settings'}><Settings /></Link>
+              <button onClick={()=>setShowSettings(true)} ><Settings /></button>
             </div>
           </div>
         </div>
       </aside>
+      <SettingsModal setShow={setShowSettings} show={showSettings} />
     </div>
   );
 };

@@ -47,7 +47,7 @@ const categories = [
 
 const StarterPackComponent = () => {
   return (
-    <div className="bg-black p-10 text-white">
+    <div className="dark:bg-black p-10 dark:text-white">
       <h2 className="mb-4 text-3xl font-bold">Innovation Starter Pack</h2>
       <p className="mb-10">
         Kickstart your innovation process with our comprehensive selection of
@@ -55,7 +55,7 @@ const StarterPackComponent = () => {
       </p>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
         {categories.map((category) => (
-          <div key={category.title} className="rounded-lg bg-gray-800 p-6">
+          <div key={category.title} className="rounded-lg  dark:bg-gray-800 p-6">
             <div className="mb-4 flex items-center space-x-2">
               {category.icon}
               <h3 className="text-xl font-semibold">{category.title}</h3>
@@ -64,10 +64,10 @@ const StarterPackComponent = () => {
               {category.items.map((item) => (
                 <li
                   key={item}
-                  className="my-2 flex cursor-pointer items-center justify-between rounded-lg bg-gray-700 px-4 py-2 text-white transition-colors duration-150 hover:bg-gray-600"
+                  className="my-2 flex cursor-pointer items-center justify-between rounded-lg dark:bg-gray-700 px-4 py-2 dark:text-white transition-colors duration-150 dark:hover:bg-gray-600 hover:text-white hover:bg-blue-300"
                 >
                   <span>{item}</span>
-                  <span className="text-gray-300 hover:text-white">➔</span>
+                  <span className="">➔</span>
                 </li>
               ))}
             </ul>
