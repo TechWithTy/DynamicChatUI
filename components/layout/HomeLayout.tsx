@@ -5,6 +5,44 @@ import { SquareKanban } from "lucide-react";
 import { Bot, File, MessageSquare, Component } from "lucide-react";
 import ChatHistoryPanel from "../ChatHistoryPanel";
 import StarterPackComponent from "../Intellicore/StarterPrompts";
+import HorizontalMenu from "../Intellicore/Actions";
+import DynamicGrid from "../Library/home";
+
+interface Item {
+  title: string;
+  description: string;
+}
+
+interface CardRowProps {
+  rowName: string;
+  items: Item[];
+}
+interface Row {
+  name: string;
+  items: Item[];
+}
+
+const data: Row[] = [
+  {
+    name: "Images",
+    items: [
+      {
+        title: "Captain Drake",
+        description:
+          "Natural born leader with years of experience in space exploration.",
+      },
+      // More items...
+    ],
+  },
+  {
+    name: "Documents",
+    items: [
+      { title: "Character bios", description: "3 documents, 43832 words" },
+      // More items...
+    ],
+  },
+  // More rows...
+];
 interface LayoutProps {
   children: ReactNode; // This is the type for children prop
 }
@@ -34,7 +72,10 @@ const HomeLayout: React.FC<LayoutProps> = ({ children }) => {
           tabs={tabs}
           icons={icons} // Pass the icons array here
         />
-        <StarterPackComponent />
+        {/* <StarterPackComponent />
+        <HorizontalMenu /> */}
+        <DynamicGrid data={data} />
+
         {/* Chat Window & Rest of the content */}
 
         <div className="flex flex-1">
