@@ -8,7 +8,7 @@ const categories = [
     icon: (
       <PenTool
         size={24}
-        className="text-emerald-400 shadow shadow-emerald-400"
+        className="text-emerald-400 "
       />
     ),
     items: [
@@ -20,7 +20,7 @@ const categories = [
   },
   {
     title: "Developer Tools",
-    icon: <Code size={24} />,
+    icon: <Code size={24} className="text-sky-400" />,
     items: [
       "API Integration",
       "Test automation",
@@ -30,7 +30,7 @@ const categories = [
   },
   {
     title: "Content Creation",
-    icon: <Feather size={24} />,
+    icon: <Feather size={24} className="text-violet-500" />,
     items: [
       "Product description",
       "E-mail copy",
@@ -40,7 +40,7 @@ const categories = [
   },
   {
     title: "Idea Generation",
-    icon: <Lightbulb size={24} />,
+    icon: <Lightbulb size={24} className="text-yellow-500" />,
     items: [
       "Hashtag ideas",
       "Brainstorming",
@@ -52,7 +52,7 @@ const categories = [
 
 const StarterPackComponent = () => {
   return (
-    <div className="w-full p-3 lg:p-10 dark:bg-gray-800 dark:text-white">
+    <div className="h-full w-full p-3 lg:p-10 dark:bg-gray-800 dark:text-white">
       <h2 className="mb-4 text-3xl font-bold">Innovation Starter Pack</h2>
       <p className="mb-10">
         Kickstart your innovation process with our comprehensive selection of
@@ -61,15 +61,17 @@ const StarterPackComponent = () => {
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
         {categories.map((category) => (
           <div key={category.title} className="rounded-lg  p-6">
-            <div className="mb-4 flex flex-col items-center justify-center  space-x-2">
-              {category.icon}
+            <div className="mb-4 flex flex-col items-center justify-center ">
+              <div className="flex h-14 w-14 items-center justify-center rounded-full p-1 dark:bg-gradient-to-r dark:from-[#D7EDED29] dark:to-gray-800/0 dark:shadow-inner dark:shadow-gray-700">
+                {category.icon}
+              </div>
               <h3 className="text-xl font-semibold">{category.title}</h3>
             </div>
             <ul>
               {category.items.map((item) => (
                 <li
                   key={item}
-                  className="my-2 flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 transition-colors duration-150 hover:bg-blue-500 bg-gradient-to-r from-gray-50/40 to-gray-300/0 dark:shadow-gray-700 hover:text-white dark:bg-gradient-to-r dark:from-[#D7EDED29] dark:to-[#CCEBEB00] dark:shadow-inner shadow-sm dark:text-white dark:hover:bg-gray-600"
+                  className="my-2 flex cursor-pointer items-center justify-between rounded-lg bg-gradient-to-r from-gray-50/40 to-gray-300/0 px-4 py-2 shadow-sm transition-colors duration-150 hover:bg-blue-500 hover:text-white dark:bg-gradient-to-r dark:from-[#D7EDED29] dark:to-gray-800/0 dark:text-white dark:shadow-inner dark:shadow-gray-700 dark:hover:bg-gray-600"
                 >
                   <span>{item}</span>
                   <span className="">➔</span>

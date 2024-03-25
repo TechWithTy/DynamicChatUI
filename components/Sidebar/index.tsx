@@ -124,13 +124,13 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
                 `https://api.dicebear.com/7.x/initials/svg?seed=${props.organizationName}&backgroundColor=7cb342,c0aede,b6e3f4,8e24aa,d81b60,d1d4f9&backgroundType=gradientLinear`
               }
               alt="Organization Logo"
-              className="aspect-square h-10 w-auto rounded-full"
+              className="aspect-square h-8 w-auto rounded-full"
               width={50}
               height={50}
             />
           }
           <div className="flex flex-col items-start justify-center">
-            <span className="w-36 overflow-hidden truncate whitespace-nowrap text-base font-semibold">
+            <span className="w-32 overflow-hidden truncate whitespace-nowrap text-base font-semibold">
               {props.organizationName}
             </span>
             <span className="text-emerald-400 dark:text-emerald-300">
@@ -178,7 +178,7 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
                     height={24}
                   />
                 ) : (
-                  <Polygon rounded={true} strokeColor={randomColorFromSeed(project.id)} sides={index + 3} radius={9} />
+                    <Polygon rounded={true} strokeColor={randomColorFromSeed(project.id)} sides={index + 3} radius={9} />
                 ),
                 label: project.name,
               }))}

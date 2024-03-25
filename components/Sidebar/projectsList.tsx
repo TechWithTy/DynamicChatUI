@@ -22,12 +22,12 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 }) => (
   <Link
     href={`/projects/${id}`}
-    className={`flex items-center rounded-lg px-3 py-2 text-sm font-medium ${isActive
+    className={`flex overflow-visible items-center rounded-lg px-3 py-2 text-sm font-medium ${isActive
       ? "bg-gray-700 text-white"
       : "text-gray-400 hover:bg-gray-700 hover:text-white"
       }`}
   >
-    {icon}
+    <div className="">{icon}</div>
     <span className="ml-3">{label}</span>
   </Link>
 );

@@ -66,7 +66,7 @@ const HomeLayout: React.FC<LayoutProps> = ({children, params}) => {
     ];
 
     return (
-        <div className="relative flex h-full gap-1">
+        <div className="relative flex h-full gap-1 p-1  ">
             {/* Toggle Button for Side Panel */}
 
             {/* Side Panel */}
