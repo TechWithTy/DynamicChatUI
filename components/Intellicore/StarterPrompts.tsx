@@ -5,12 +5,7 @@ import { PenTool, Code, Feather, Lightbulb } from "lucide-react";
 const categories = [
   {
     title: "Creative Assets",
-    icon: (
-      <PenTool
-        size={24}
-        className="text-emerald-400 "
-      />
-    ),
+    icon: <PenTool size={24} className="text-emerald-400 " />,
     items: [
       "UI wireframe",
       "Brochure design",
@@ -62,7 +57,7 @@ const StarterPackComponent = () => {
         {categories.map((category) => (
           <div key={category.title} className="rounded-lg  p-6">
             <div className="mb-4 flex flex-col items-center justify-center ">
-              <div className="flex h-14 w-14 items-center justify-center rounded-full p-1 dark:bg-gradient-to-r dark:from-[#D7EDED29] dark:to-gray-800/0 dark:shadow-inner dark:shadow-gray-700 bg-neutral-100 shadow-lg">
+              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-neutral-100 p-1 shadow-lg dark:bg-gradient-to-br dark:from-gray-800/50 dark:to-neutral-900 dark:shadow-inner dark:shadow-neutral-700">
                 {category.icon}
               </div>
               <h3 className="text-xl font-semibold">{category.title}</h3>
