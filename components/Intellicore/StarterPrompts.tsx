@@ -47,7 +47,7 @@ const categories = [
 
 const StarterPackComponent = () => {
   return (
-    <div className="dark:bg-black p-10 dark:text-white">
+    <div className="dark:bg-black p-3 lg:p-10 dark:text-white">
       <h2 className="mb-4 text-3xl font-bold">Innovation Starter Pack</h2>
       <p className="mb-10">
         Kickstart your innovation process with our comprehensive selection of

@@ -1,7 +1,9 @@
 import React from "react";
 import { CircleDotIcon, TriangleIcon, PlusCircle } from "lucide-react";
+import Link from "next/link";
 
 export interface ProjectItemProps {
+  id: string;
   label: string;
   icon: JSX.Element;
   isActive?: boolean;
@@ -13,19 +15,21 @@ export interface ProjectListProps {
 }
 
 const ProjectItem: React.FC<ProjectItemProps> = ({
+  id,
   icon,
   label,
   isActive = false,
 }) => (
-  <div
+  <Link
+    href={`/projects/${id}`}
     className={`flex items-center rounded-lg px-3 py-2 text-sm font-medium ${isActive
-        ? "bg-gray-700 text-white"
-        : "text-gray-400 hover:bg-gray-700 hover:text-white"
+      ? "bg-gray-700 text-white"
+      : "text-gray-400 hover:bg-gray-700 hover:text-white"
       }`}
   >
     {icon}
     <span className="ml-3">{label}</span>
-  </div>
+  </Link>
 );
 
 const ProjectsList: React.FC<ProjectListProps> = ({ list }) => (
@@ -33,6 +37,7 @@ const ProjectsList: React.FC<ProjectListProps> = ({ list }) => (
     <div className="projects-container space-y-1">
       {list.map((project, index) => (
         <ProjectItem
+          id={project.id}
           key={index}
           icon={project.icon}
           label={project.label}

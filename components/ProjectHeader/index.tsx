@@ -9,17 +9,15 @@ import OptionsDropDown from "./OptionsDropDown";
 interface HeaderProps {
     title: string;
     description: string;
-    tabs: string[];
     users: {
         firstName?: string;
         lastName?: string;
         image?: string;
         isOnline: boolean
     }[],
-    icons: React.ReactNode[]; // Array of React node elements for icons
 }
 
-const ProjectHeader: React.FC<HeaderProps> = ({ title, description, tabs, users, icons }) => {
+const ProjectHeader: React.FC<HeaderProps> = ({ title, description, users, }) => {
     return (
         <header className="p-4  dark:bg-gray-800  rounded-md">
             <div className="flex items-center justify-between">
@@ -31,7 +29,7 @@ const ProjectHeader: React.FC<HeaderProps> = ({ title, description, tabs, users,
                         </div>
                         <div className="flex">
                             <div className="">
-                                <MembersIndicator additionalCount={5} users={users} />
+                                <MembersIndicator users={users} />
                             </div>
                             <div className="flex">
                                 <div className="hidden lg:flex lg:gap-2 lg:justify-center lg:items-center">

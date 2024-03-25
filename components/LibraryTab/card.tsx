@@ -1,5 +1,6 @@
 import React from "react";
 import { MessageCircle, Users, Menu } from "lucide-react";
+import Image from "next/image";
 
 interface ImageCardProps {
   title: string;
@@ -25,7 +26,9 @@ const ImageCard: React.FC<ImageCardProps> = ({
       <p className="text-gray-400">{description}</p>
       <div className="flex justify-start space-x-2">
         {imageUrls.map((url, index) => (
-          <img
+          <Image
+            width={150}
+            height={150}
             key={index}
             className="h-16 w-1/3 rounded-lg object-cover"
             src={url}
@@ -37,7 +40,9 @@ const ImageCard: React.FC<ImageCardProps> = ({
       <div className="flex items-center justify-between">
         <div className="flex items-center -space-x-2">
           {avatarUrls.slice(0, 3).map((url, index) => (
-            <img
+            <Image
+              width={30}
+              height={30}
               key={index}
               className="h-8 w-8 rounded-full border-2 border-gray-800 object-cover"
               src={url}

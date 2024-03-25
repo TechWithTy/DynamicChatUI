@@ -11,12 +11,12 @@ interface User {
 
 interface MembersIndicatorProps {
     users: User[];
-    additionalCount: number;
 }
 
 // MembersIndicator component
-const MembersIndicator: React.FC<MembersIndicatorProps> = ({ users, additionalCount }) => {
+const MembersIndicator: React.FC<MembersIndicatorProps> = ({ users }) => {
     const displayedUsers = users.slice(0, 4).reverse(); // Reverse the users for display
+    const additionalCount = users.length - displayedUsers.length;
 
     return (
         <div className="flex pl-4">

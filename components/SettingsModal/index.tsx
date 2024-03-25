@@ -4,7 +4,6 @@ import React, { Dispatch, SetStateAction, useState } from "react";
 import Modal from "../shared/modal";
 import { X } from "lucide-react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import "react-tabs/style/react-tabs.css";
 import useTheme from "@/lib/hooks/use-theme";
 import ToggleSwitch from "../shared/ToggleSwitch";
 interface SettingsModalProp {
@@ -27,7 +26,7 @@ const PreferenceSettings = () => {
             <div className="flex flex-row w-full justify-between items-center">
                 <div>DarkMode : </div>
                 <div>
-                    <ToggleSwitch defaultValue={theme==='dark'} onChange={changeTheme} />
+                    <ToggleSwitch defaultValue={theme === 'dark'} onChange={changeTheme} />
                 </div>
             </div>
         </div>
@@ -48,21 +47,23 @@ const SettingsModal: React.FC<SettingsModalProp> = ({ show, setShow }) => {
                     </button>
                 </div>
 
-                <div>
-                    <Tabs>
-                        <TabList>
-                            <Tab>Preferences</Tab>
-                            <Tab>Title 2</Tab>
-                        </TabList>
+                <Tabs className={'flex lg:flex-row divide-x gap-4'}>
+                    <TabList className={`flex flex-col `}>
+                        <Tab className={'dark:aria-selected:bg-gray-600 aria-selected:bg-blue-500 p-4 rounded-md'} >Preferences</Tab>
+                        <Tab className={'dark:aria-selected:bg-gray-600 aria-selected:bg-blue-500 p-4 rounded-md'} >Title 2</Tab>
+                    </TabList>
 
-                        <TabPanel>
+
+                    <div className="flex-grow">
+                        <TabPanel className={"flex-grow px-4"}>
                             <PreferenceSettings />
                         </TabPanel>
                         <TabPanel>
                             <h2>Any content 2</h2>
                         </TabPanel>
-                    </Tabs>
-                </div>
+
+                    </div>
+                </Tabs>
             </div>
         </Modal>
     );
