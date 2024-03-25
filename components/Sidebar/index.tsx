@@ -109,7 +109,7 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
       <aside
         className={` z-10 
         flex h-full  transform flex-col overflow-auto
-        rounded-r-lg bg-slate-300 transition-all  duration-300 ease-in-out lg:mt-0 lg:flex  dark:bg-black
+        rounded-r-lg bg-neutral-50 transition-all  duration-300 ease-in-out lg:mt-0 lg:flex  dark:bg-black
         ${isSidePanelOpen
             ? "fixed  left-0 top-0 w-64 lg:relative lg:w-64"
             : "relative hidden w-0 -translate-x-full"

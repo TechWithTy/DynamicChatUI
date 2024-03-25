@@ -62,7 +62,7 @@ const StarterPackComponent = () => {
         {categories.map((category) => (
           <div key={category.title} className="rounded-lg  p-6">
             <div className="mb-4 flex flex-col items-center justify-center ">
-              <div className="flex h-14 w-14 items-center justify-center rounded-full p-1 dark:bg-gradient-to-r dark:from-[#D7EDED29] dark:to-gray-800/0 dark:shadow-inner dark:shadow-gray-700">
+              <div className="flex h-14 w-14 items-center justify-center rounded-full p-1 dark:bg-gradient-to-r dark:from-[#D7EDED29] dark:to-gray-800/0 dark:shadow-inner dark:shadow-gray-700 bg-neutral-100 shadow-lg">
                 {category.icon}
               </div>
               <h3 className="text-xl font-semibold">{category.title}</h3>
