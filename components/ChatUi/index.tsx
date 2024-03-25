@@ -54,17 +54,17 @@ const ChatUI: React.FC = (props) => {
                 <div className="relative flex items-center">
                     <textarea
                         placeholder="What you want to share today?"
-                        className="w-full bg-gray-700 rounded-full pl-4 pr-10 py-2 overflow-hidden resize-none"
+                        className="w-full bg-gray-700 rounded-xl pl-4 pr-24 py-7 overflow-hidden resize-none outline-lime-300 ring-lime-300 ring-offset-lime-400 focus:border-lime-400"
                         style={{ minHeight: '40px' }} // Minimum height before user input
                         rows={1} // Starts with a single line
                         value={newMessage}
                         onChange={(e) => setNewMessage(e.target.value)}
                     />
-                    <div className="absolute bottom-2 right-2 flex space-x-2">
+                    <div className="absolute items-center justify-between h-full top-0 right-2 flex w-20">
                         <button onClick={() => { }} className="4">
                             <PaperclipIcon />
                         </button>
-                        <button onClick={handleSendMessage} className="">
+                        <button onClick={handleSendMessage} className="p-3 dark:bg-gray-800 rounded-xl shadow-inner shadow-gray-900">
                             <SendIcon />
                         </button>
                     </div>
