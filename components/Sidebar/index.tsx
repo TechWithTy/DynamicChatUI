@@ -64,16 +64,18 @@ const projectData: ProjectItemProps[] = [
 ];
 
 const SidebarItem = ({
+  link,
   icon,
   label,
   isActive = false,
 }: {
+    link?: string;
   icon: React.ReactNode;
   label: string;
   isActive?: boolean;
 }) => (
-  <a
-    href="#"
+  <Link
+    href={link ? link : "#"}
     className={`flex items-center rounded-lg px-3 py-2 text-sm font-medium ${isActive
       ? "bg-slate-500 text-white dark:bg-gray-700"
       : "text-gray-400 hover:bg-gray-700 hover:text-white"
@@ -81,7 +83,7 @@ const SidebarItem = ({
   >
     {icon}
     <span className="px-3 w-30 overflow-hidden whitespace-nowrap truncate">{label}</span>
-  </a>
+  </Link>
 );
 
 const Sidebar: React.FC<SidebarProps> = (props) => {
@@ -107,9 +109,8 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
       <aside
         className={` z-10 
         flex h-full  transform flex-col overflow-auto
-        rounded-r-lg bg-slate-300 transition-all  duration-300 ease-in-out lg:mt-0 lg:flex  dark:bg-gray-800 
-        ${
-          isSidePanelOpen
+        rounded-r-lg bg-slate-300 transition-all  duration-300 ease-in-out lg:mt-0 lg:flex  dark:bg-black
+        ${isSidePanelOpen
             ? "fixed  left-0 top-0 w-64 lg:relative lg:w-64"
             : "relative hidden w-0 -translate-x-full"
           }    `}
@@ -184,6 +185,7 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
               }))}
             />
             <SidebarItem
+              link="/projects/add"
               icon={<PlusCircle size={20} className="text-gray-400" />}
               label="Add new project"
             />

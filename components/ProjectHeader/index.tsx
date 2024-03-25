@@ -19,7 +19,7 @@ interface HeaderProps {
 
 const ProjectHeader: React.FC<HeaderProps> = ({ title, description, users, }) => {
     return (
-        <header className="p-4  dark:bg-gray-800  rounded-md">
+        <header className="p-4  dark:bg-black  rounded-md">
             <div className="flex items-center justify-between">
                 <div className="flex-grow">
                     <div className="flex flex-col lg:flex-row lg:justify-between items-center mx-2">

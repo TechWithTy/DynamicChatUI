@@ -24,15 +24,15 @@ const AddProjectModal: React.FC<AddProjectModalProps> = ({ isOpen, setIsOpen }) 
       showModal={isOpen}
       setShowModal={setIsOpen}
     >
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="flex justify-between items-center">
+          <form onSubmit={handleSubmit} className="space-y-4  container bg-gray-50 dark:bg-black p-5 lg:p-10 rounded-lg">
+              <div className="flex justify-between items-center">
           <h2 className="text-xl font-semibold">Add New Project</h2>
-          <button onClick={()=>setIsOpen(false)} type="button" className="text-gray-500 hover:text-gray-700">
+                  <button onClick={() => setIsOpen(false)} type="button" className="text-gray-500 hover:text-red-500">
             <XCircle size={24} />
           </button>
         </div>
         <div>
-          <label htmlFor="projectName" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="projectName" className="block text-sm font-medium dark:text-gray-200">
             Project Name
           </label>
           <input
@@ -40,25 +40,25 @@ const AddProjectModal: React.FC<AddProjectModalProps> = ({ isOpen, setIsOpen }) 
             type="text"
             value={projectName}
             onChange={(e) => setProjectName(e.target.value)}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                      className="mt-1 block w-full dark:bg-gray-800  px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
             required
           />
         </div>
         <div>
-          <label htmlFor="description" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="description" className="block text-sm font-medium dark:text-gray-200">
             Description
           </label>
           <textarea
             id="description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                      className="mt-1 block w-full px-3 py-2 border dark:bg-gray-800 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
             rows={4}
             required
           ></textarea>
         </div>
         <fieldset className="space-y-2">
-          <legend className="text-sm font-medium text-gray-700">Privacy</legend>
+                  <legend className="text-sm font-medium dark:text-gray-200">Privacy</legend>
           <div className="flex items-center">
             <input
               id="public"
@@ -69,7 +69,7 @@ const AddProjectModal: React.FC<AddProjectModalProps> = ({ isOpen, setIsOpen }) 
               onChange={() => setPrivacy('public')}
               className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
             />
-            <label htmlFor="public" className="ml-2 block text-sm text-gray-700">
+                      <label htmlFor="public" className="ml-2 block text-sm dark:text-gray-200">
               Public
             </label>
           </div>
@@ -83,7 +83,7 @@ const AddProjectModal: React.FC<AddProjectModalProps> = ({ isOpen, setIsOpen }) 
               onChange={() => setPrivacy('private')}
               className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
             />
-            <label htmlFor="private" className="ml-2 block text-sm text-gray-700">
+                      <label htmlFor="private" className="ml-2 block text-sm dark:text-gray-200">
               Private
             </label>
           </div>

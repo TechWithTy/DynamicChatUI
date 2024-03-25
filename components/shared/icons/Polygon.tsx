@@ -49,7 +49,7 @@ const Polygon: React.FC<PolygonProps> = ({
           width="200%"
           height="200%"
         >
-          <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur5" />
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur5" />
           <feGaussianBlur
             in="SourceGraphic"
             stdDeviation="10"
@@ -57,17 +57,17 @@ const Polygon: React.FC<PolygonProps> = ({
           />
           <feGaussianBlur
             in="SourceGraphic"
-            stdDeviation="20"
+                      stdDeviation="4"
             result="blur20"
           />
           <feGaussianBlur
             in="SourceGraphic"
-            stdDeviation="30"
+                      stdDeviation="5"
             result="blur30"
           />
           <feGaussianBlur
             in="SourceGraphic"
-            stdDeviation="50"
+                      stdDeviation="6"
             result="blur50"
           />
           <feMerge result="blur-merged">
@@ -85,8 +85,7 @@ const Polygon: React.FC<PolygonProps> = ({
                              0 0 0.44 0 0
                              0 0 0 1 0"
           />
-          <feMerge>
-            <feMergeNode in="red-blur" />
+                  <feMerge>
             <feMergeNode in="blur5" />
             <feMergeNode in="SourceGraphic" />
           </feMerge>

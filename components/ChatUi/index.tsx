@@ -33,7 +33,7 @@ const ChatUI: React.FC = (props) => {
     };
 
     return (
-        <div className="flex flex-col h-full bg-gray-800 text-white">
+        <div className="flex flex-col h-full dark:bg-neutral-900 dark:text-white">
             <div className="overflow-auto">
                 {messages.map((message) => (
                     <div key={message.id} className="p-4 border-b border-gray-700">
@@ -51,20 +51,20 @@ const ChatUI: React.FC = (props) => {
                 ))}
             </div>
             <div className="p-4">
-                <div className="relative flex items-center">
+                <div className="relative flex items-center border dark:border-gray-600 rounded-xl dark:bg-black">
                     <textarea
                         placeholder="What you want to share today?"
-                        className="w-full bg-gray-700 rounded-xl pl-4 pr-24 py-7 overflow-hidden resize-none outline-lime-300 ring-lime-300 ring-offset-lime-400 focus:border-lime-400"
+                        className="w-full overflow-auto bg-transparent  rounded-xl pl-4  py-7 outline-none ring-0 border-0 focus:ring-0  focus:outline-none"
                         style={{ minHeight: '40px' }} // Minimum height before user input
-                        rows={1} // Starts with a single line
+                        rows={2} // Starts with a single line
                         value={newMessage}
                         onChange={(e) => setNewMessage(e.target.value)}
                     />
-                    <div className="absolute items-center justify-between h-full top-0 right-2 flex w-20">
+                    <div className="items-center justify-between h-full top-0 right-2 flex gap-2">
                         <button onClick={() => { }} className="4">
                             <PaperclipIcon />
                         </button>
-                        <button onClick={handleSendMessage} className="p-3 dark:bg-gray-800 rounded-xl shadow-inner shadow-gray-900">
+                        <button onClick={handleSendMessage} className="p-3 dark:bg-gray-800 rounded-xl shadow dark:shadow-inner dark:shadow-gray-900">
                             <SendIcon />
                         </button>
                     </div>

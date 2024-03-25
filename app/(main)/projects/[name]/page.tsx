@@ -52,8 +52,8 @@ function ProjectPage({ params }: { params: { name: string } }) {
             users={data?.users}
         />}
 
-        <Tabs selectedIndex={currentTab} onSelect={(index) => setCurrentTab(index)}>
-            <TabList className={'dark:bg-gray-800'}>
+        <Tabs className={'pr-2'} selectedIndex={currentTab} onSelect={(index) => setCurrentTab(index)}>
+            <TabList className={'dark:bg-black px-2'}>
                 <div className="flex py-4 items-center">
                     {tabs.map((tab, index) => (
                         <Tab
