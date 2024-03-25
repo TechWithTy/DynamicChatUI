@@ -1,7 +1,7 @@
 // components/ChatHistoryPanel.tsx
 "use client";
 import React, { useState } from "react";
-import { MessageSquare, ChevronDown, ChevronUp, Trash } from "lucide-react";
+import { MessageSquare, ChevronDown, ChevronUp, Trash, MessagesSquare, LucideMessagesSquare } from "lucide-react";
 import useWindowSize from "@/lib/hooks/use-window-size";
 
 interface ChatItemProps {
@@ -39,13 +39,19 @@ const ChatHistoryPanel: React.FC = () => {
     ];
 
     return (
-        <aside className="fixed bottom-0 right-0 lg:flex self-end h-fit w-64 flex-col bg-white  dark:bg-gray-800">
+        <aside className={`fixed bottom-0 right-0 flex gap-4 self-end h-fit ${isExpanded ? "w-full" : "w-fit"} lg:w-64 flex-col bg-white  dark:bg-neutral-900`}>
             <button
-                className="flex w-full items-center justify-between p-4 bg-gray-200 rounded-md dark:bg-gray-600"
+                className="hidden lg:flex w-full items-center justify-between p-4 bg-gray-200 rounded-md dark:bg-gray-600"
                 onClick={() => setIsExpanded(!isExpanded)}
             >
                 <span className="text-lg">Chat History</span>
                 {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+            </button>
+            <button
+                className="lg:hidden self-end flex items-center justify-between w-fit p-4 bg-gray-200 rounded-full dark:bg-gray-600"
+                onClick={() => setIsExpanded(!isExpanded)}
+            >
+                <LucideMessagesSquare />
             </button>
 
             {isExpanded && (
