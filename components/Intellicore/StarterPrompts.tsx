@@ -5,7 +5,12 @@ import { PenTool, Code, Feather, Lightbulb } from "lucide-react";
 const categories = [
   {
     title: "Creative Assets",
-    icon: <PenTool size={24} />,
+    icon: (
+      <PenTool
+        size={24}
+        className="text-emerald-400 shadow shadow-emerald-400"
+      />
+    ),
     items: [
       "UI wireframe",
       "Brochure design",
@@ -47,7 +52,7 @@ const categories = [
 
 const StarterPackComponent = () => {
   return (
-    <div className="dark:bg-black p-3 lg:p-10 dark:text-white">
+    <div className="w-full p-3 lg:p-10 dark:bg-gray-800 dark:text-white">
       <h2 className="mb-4 text-3xl font-bold">Innovation Starter Pack</h2>
       <p className="mb-10">
         Kickstart your innovation process with our comprehensive selection of
@@ -55,8 +60,8 @@ const StarterPackComponent = () => {
       </p>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
         {categories.map((category) => (
-          <div key={category.title} className="rounded-lg  dark:bg-gray-800 p-6">
-            <div className="mb-4 flex items-center space-x-2">
+          <div key={category.title} className="rounded-lg  p-6">
+            <div className="mb-4 flex flex-col items-center justify-center  space-x-2">
               {category.icon}
               <h3 className="text-xl font-semibold">{category.title}</h3>
             </div>
@@ -64,7 +69,7 @@ const StarterPackComponent = () => {
               {category.items.map((item) => (
                 <li
                   key={item}
-                  className="my-2 flex cursor-pointer items-center justify-between rounded-lg dark:bg-gray-700 px-4 py-2 dark:text-white transition-colors duration-150 dark:hover:bg-gray-600 hover:text-white hover:bg-blue-300"
+                  className="my-2 flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 transition-colors duration-150 hover:bg-blue-500 bg-gradient-to-r from-gray-50/40 to-gray-300/0 dark:shadow-gray-700 hover:text-white dark:bg-gradient-to-r dark:from-[#D7EDED29] dark:to-[#CCEBEB00] dark:shadow-inner shadow-sm dark:text-white dark:hover:bg-gray-600"
                 >
                   <span>{item}</span>
                   <span className="">➔</span>
