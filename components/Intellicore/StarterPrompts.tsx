@@ -1,11 +1,13 @@
 import React from "react";
 // Import your icons from wherever they are located. Placeholder icons used here:
 import { PenTool, Code, Feather, Lightbulb } from "lucide-react";
+import GlowSvg from "../shared/icons/GlowSvg";
+import Image from "next/image";
 
 const categories = [
   {
     title: "Creative Assets",
-    icon: <PenTool size={24} className="text-emerald-400 " />,
+    icon: <><GlowSvg svgSize={24} ><PenTool size={24} className="text-emerald-400 " /></GlowSvg></>,
     items: [
       "UI wireframe",
       "Brochure design",
@@ -15,7 +17,7 @@ const categories = [
   },
   {
     title: "Developer Tools",
-    icon: <Code size={24} className="text-sky-400" />,
+    icon:<GlowSvg svgSize={24} ><Code size={24} className="text-blue-500" /></GlowSvg>,
     items: [
       "API Integration",
       "Test automation",
@@ -25,7 +27,7 @@ const categories = [
   },
   {
     title: "Content Creation",
-    icon: <Feather size={24} className="text-violet-500" />,
+    icon: <><GlowSvg svgSize={24} ><Feather size={24} className="text-violet-500" /></GlowSvg></>,
     items: [
       "Product description",
       "E-mail copy",
@@ -35,7 +37,7 @@ const categories = [
   },
   {
     title: "Idea Generation",
-    icon: <Lightbulb size={24} className="text-yellow-500" />,
+    icon: <><GlowSvg svgSize={24} ><Lightbulb size={24} className="text-yellow-500" /></GlowSvg></>,
     items: [
       "Hashtag ideas",
       "Brainstorming",

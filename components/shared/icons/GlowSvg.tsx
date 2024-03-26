@@ -59,7 +59,11 @@ function GlowSvg({ children, svgSize }: { children: ReactNode, svgSize: number }
                     </feMerge>
                 </filter>
             </defs>
-            {children}
+            <svg style={{ filter: "url(#glow)" }}>
+                <use href="#glow" />
+                {children}
+
+            </svg>
 
         </svg>
     );
