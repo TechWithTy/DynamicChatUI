@@ -82,7 +82,9 @@ const SidebarItem = ({
       }`}
   >
     {icon}
-    <span className="px-3 w-30 overflow-hidden whitespace-nowrap truncate">{label}</span>
+    <span className="w-30 overflow-hidden truncate whitespace-nowrap px-3">
+      {label}
+    </span>
   </Link>
 );
 
@@ -110,7 +112,8 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
         className={` z-10 
         flex h-full  transform flex-col overflow-auto
         rounded-r-lg bg-neutral-50 transition-all  duration-300 ease-in-out lg:mt-0 lg:flex  dark:bg-black
-        ${isSidePanelOpen
+        ${
+          isSidePanelOpen
             ? "fixed  left-0 top-0 w-64 lg:relative lg:w-64"
             : "relative hidden w-0 -translate-x-full"
           }    `}
@@ -179,7 +182,12 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
                     height={24}
                   />
                 ) : (
-                    <Polygon rounded={true} strokeColor={randomColorFromSeed(project.id)} sides={index + 3} radius={9} />
+                    <Polygon
+                      rounded={true}
+                      strokeColor={randomColorFromSeed(project.id)}
+                      sides={index + 3}
+                      radius={9}
+                    />
                 ),
                 label: project.name,
               }))}
@@ -194,7 +202,7 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
         <hr className="my-5 h-[1px] border-gray-100 dark:border-gray-700 dark:text-gray-700" />
 
         {/* Bottom part of the sidebar for additional actions or profile */}
-        <div className="m-2 mt-auto rounded-lg bg-gray-300 p-2 px-2 pb-4 pt-4 shadow-lg dark:bg-gray-700">
+        <div className="m-2 mt-auto rounded-2xl bg-white p-2 px-2 pb-4 pt-4 shadow-lg dark:bg-gradient-to-br dark:from-neutral-800 dark:to-neutral-900 dark:shadow-inner dark:shadow-neutral-700">
           {/* Profile Section */}
           <div className=" flex items-center justify-around px-3 py-2">
             <UserIcon user={props.user} isOnline={true} />

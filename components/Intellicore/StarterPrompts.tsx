@@ -55,7 +55,7 @@ const StarterPackComponent = () => {
         Kickstart your innovation process with our comprehensive selection of
         predefined prompts.
       </p>
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 max-h-full overflow-y-auto">
         {categories.map((category) => (
           <div key={category.title} className="rounded-lg  p-6">
             <div className="mb-4 flex flex-col items-center justify-center ">

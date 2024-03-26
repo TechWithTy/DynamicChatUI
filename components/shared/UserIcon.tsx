@@ -35,7 +35,7 @@ const UserIcon: React.FC<UserProps> = ({ user, isOnline }) => {
                         {user.lastName[0].toUpperCase()}
                     </div>
                 )}
-                <div className="absolute -right-1 -top-1 bg-gray-300  p-1 dark:bg-gray-700 rounded-full flex items-center justify-center">
+                <div className="absolute -right-1 -top-1 bg-white  p-1 dark:bg-gray-800 rounded-full flex items-center justify-center">
                     <span
                         className={` block h-3 w-3 rounded-full ${isOnline ? "bg-green-500" : "bg-gray-400"
                             }`}

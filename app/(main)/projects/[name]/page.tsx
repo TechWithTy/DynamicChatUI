@@ -11,11 +11,11 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 
 function ProjectPage({ params }: { params: { name: string } }) {
 
-    
+
     const data = testProjectData.find((project) => project.id === params.name);
 
     console.log(testProjectData);
-    if(!data) redirect('/404');
+    if (!data) redirect('/404');
     const [currentTab, setCurrentTab] = useState(0);
     const tabs = [{
 
@@ -45,15 +45,16 @@ function ProjectPage({ params }: { params: { name: string } }) {
     ];
 
 
-    return (<div className="flex-col">
-        {<ProjectHeader
-            title={data?.name as string}
-            description={data?.description as string}
-            users={data?.users}
-        />}
+    return (
+        <div className="flex flex-col h-full"> {/* Ensure the container is a flex column */}
+            <ProjectHeader
+                title={data?.name as string}
+                description={data?.description as string}
+                users={data?.users}
+            />
 
-        <Tabs className={'pr-2'} selectedIndex={currentTab} onSelect={(index) => setCurrentTab(index)}>
-            <TabList className={'dark:bg-black px-2'}>
+            <Tabs className="flex flex-col h-full" selectedIndex={currentTab} onSelect={(index) => setCurrentTab(index)}>
+                <TabList className="flex-shrink-0">
                 <div className="flex py-4 items-center">
                     {tabs.map((tab, index) => (
                         <Tab
@@ -66,19 +67,23 @@ function ProjectPage({ params }: { params: { name: string } }) {
                         </Tab>
                     ))}
                 </div>
-            </TabList>
-            <TabPanel >
-                <Intellicore />
-            </TabPanel>
-            <TabPanel>
-                <ChatUI />
-            </TabPanel>
-            <TabPanel >
-                <LibraryTab data={[]} />
-            </TabPanel>
-        </Tabs>
+                </TabList>
 
-    </div>);
+                {/* Apply flex-grow and overflow-auto here */}
+                <div className="flex-grow overflow-auto">
+                    <TabPanel>
+                        <Intellicore />
+                    </TabPanel>
+                    <TabPanel>
+                        <ChatUI />
+                    </TabPanel>
+                    <TabPanel>
+                        <LibraryTab data={[]} />
+                    </TabPanel>
+                </div>
+            </Tabs>
+        </div>
+    );
 }
 
 export default ProjectPage;
